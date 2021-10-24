@@ -5,7 +5,6 @@
 #include "../Headers/Blockchain.h"
 #include <string>
 #include <sstream>
-#include <thread>
 
 using namespace std;
 
@@ -14,7 +13,7 @@ Miner::Miner(Blockchain curChain) : _nCurChain(curChain) {}
 
 void Miner::start() {
     while(true) {
-        
+        this->MineBlock();
     }
 }
 

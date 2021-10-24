@@ -4,33 +4,40 @@
 #include <vector>
 #include <string>
 #include <thread>
-// #include <boost/thread.hpp>
 
 using namespace std;
 
+void threadHelper();
+Blockchain bChain = Blockchain();
+
 int main() {
-    Blockchain bChain = Blockchain();
     string command;
-    vector<Miner> ActiveMiners;
     vector<thread> vecThread;
-    while(true) {
+
+    while(command != "exit") {
 
         cin >> command;
 
-        if(command == "start") {
+        thread t1;
 
-            cout << "first";
-            Miner tempMiner = Miner(bChain);
-            function f = tempMiner.start()
-            thread t1(Miner::start, &tempMiner);
-            ActiveMiners.push_back(tempMiner);
+        if(command == "start") {
+           
         }
 
         if(command == "stop") {
-            ActiveMiners.erase(ActiveMiners.begin());
-            vecThread.erase(vecThread.begin());
+            
         }
     }
 
+    for(int i = 0; i < vecThread.size(); i++) {
+        vecThread[i].join();
+    }
+
     return 0;
+}
+
+void threadHelper() {
+    Miner *tempMiner = new Miner(bChain);
+    tempMiner->start();
+    cout << "hi";
 }
